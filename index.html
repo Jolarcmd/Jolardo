@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Jolardo — Luxury Web Design &amp; Custom Web Development Services</title>
+  <meta name="title" content="Jolardo — Luxury Web Design &amp; Custom Web Development Services" />
+  <meta name="description" content="Jolardo crafts bespoke, high-performance websites, luxury brand identities, and e-commerce platforms that command attention and drive measurable business growth." />
+  <meta name="keywords" content="Jolardo, Jolardo web development, website design services, website development company, custom website development, business website design, e-commerce website development, luxury web design" />
+  <meta name="author" content="Jolardo" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://jolardo.com/" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jolardo" />
+  <meta property="og:url" content="https://jolardo.com/" />
+  <meta property="og:title" content="Jolardo — Luxury Web Design &amp; Custom Web Development Services" />
+  <meta property="og:description" content="We design and build bespoke, high-performance luxury websites that elevate your brand and convert visitors into loyal clients." />
+  <meta property="og:image" content="https://jolardo.com/icons/1.png" />
+  <meta property="og:image:alt" content="Jolardo Web Development Brand Logo" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://jolardo.com/" />
+  <meta name="twitter:title" content="Jolardo — Luxury Web Design &amp; Custom Web Development Services" />
+  <meta name="twitter:description" content="Bespoke, high-performance luxury websites, UI/UX designs, and scalable web solutions crafted for distinguished brands." />
+  <meta name="twitter:image" content="https://jolardo.com/icons/1.png" />
+  <meta name="twitter:image:alt" content="Jolardo Brand Logo" />
+
+  <!-- Theme & Mobile Optimization -->
+  <meta name="theme-color" content="#000000" />
+  <meta name="color-scheme" content="dark light" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+
+  <!-- Performance & Preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://ascvflnrsqwyebbmucmx.supabase.co" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/index.css" />
+
+  <!-- JSON-LD Structured Data (Organization, WebSite, Services) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://jolardo.com/#organization",
+        "name": "Jolardo",
+        "url": "https://jolardo.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://jolardo.com/icons/1.png",
+          "caption": "Jolardo Logo"
+        },
+        "description": "Jolardo is a premium web design and custom development agency providing bespoke digital experiences, brand architecture, and e-commerce solutions.",
+        "email": "info@jolardo.com",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "email": "info@jolardo.com",
+          "url": "https://jolardo.com/contact.html"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://jolardo.com/#website",
+        "url": "https://jolardo.com/",
+        "name": "Jolardo",
+        "publisher": {
+          "@id": "https://jolardo.com/#organization"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "Service",
+        "@id": "https://jolardo.com/#service-webdev",
+        "name": "Custom Web Development",
+        "provider": {
+          "@id": "https://jolardo.com/#organization"
+        },
+        "serviceType": "Website Development",
+        "description": "High-performance, secure, and responsive custom websites engineered with modern web standards and database architectures."
+      },
+      {
+        "@type": "Service",
+        "@id": "https://jolardo.com/#service-uiux",
+        "name": "UI/UX & Brand Design",
+        "provider": {
+          "@id": "https://jolardo.com/#organization"
+        },
+        "serviceType": "Web & Brand Design",
+        "description": "Bespoke user interface and experience design crafted with luxury aesthetics, intuitive navigation, and high-conversion layouts."
+      },
+      {
+        "@type": "Service",
+        "@id": "https://jolardo.com/#service-ecommerce",
+        "name": "E-Commerce Solutions",
+        "provider": {
+          "@id": "https://jolardo.com/#organization"
+        },
+        "serviceType": "E-Commerce Development",
+        "description": "Full-featured online shopping experiences with secure payment integration, inventory management, and customer portals."
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <img src="icons/1.png" alt="Jolardo" class="loader-logo" />
+    <div class="spinner"></div>
+  </div>
+  <script>
+    setTimeout(function() {
+      var l = document.getElementById('page-loader');
+      if (l) l.classList.add('hidden');
+    }, 1000);
+  </script>
+
+  <!-- Navbar -->
+  <div id="navbar-container">
+    <nav class="navbar" id="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo">
+          <img src="icons/1.png" alt="Jolardo" />
+          <span>JOLARDO</span>
+        </a>
+        <div class="navbar-nav">
+          <a href="index.html" class="nav-link active">Home</a>
+          <a href="contact.html" class="nav-link">Contact Us</a>
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="create-account.html" class="btn btn-primary btn-sm">Create Account</a>
+        </div>
+        <div class="navbar-actions">
+          <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+          <button class="hamburger" aria-label="Open menu" id="hamburger">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="contact.html" class="nav-link">Contact Us</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <a href="create-account.html" class="nav-link">Create Account</a>
+    </div>
+  </div>
+  <div id="mobile-menu-container"></div>
+
+  <!-- ═══════════════════════════════
+       HERO
+  ═══════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow fade-in">
+        <span>⬥</span> Premium Web Development <span>⬥</span>
+      </div>
+      <h1 class="hero-title gradient-text serif fade-in">
+        Websites That<br/>Command Attention
+      </h1>
+      <p class="hero-subtitle fade-in">
+        We design and build high-performance, visually stunning websites that reflect your brand's identity and convert visitors into loyal clients.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="contact.html" class="btn btn-primary btn-lg" id="hero-cta-contact">Start Your Project</a>
+        <a href="create-account.html" class="btn btn-outline btn-lg" id="hero-cta-register">Create Account</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-indicator"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       SERVICES
+  ═══════════════════════════════ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title serif">Our Services</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">
+          From concept to launch, we handle every aspect of your web presence with precision and elegance.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <div class="card reveal" id="service-design">
+          <div class="service-icon">🎨</div>
+          <h3 class="service-title serif">UI/UX Design</h3>
+          <p class="service-desc">
+            Pixel-perfect interfaces designed with your audience in mind. We create intuitive, beautiful experiences that users love.
+          </p>
+          <ul class="service-list">
+            <li>Brand-aligned visual identity</li>
+            <li>Mobile-first responsive layouts</li>
+            <li>Custom typography &amp; color systems</li>
+            <li>Interactive prototypes</li>
+          </ul>
+        </div>
+
+        <div class="card reveal" id="service-development">
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-title serif">Web Development</h3>
+          <p class="service-desc">
+            Fast, secure, and scalable websites built with modern technologies. Every line of code crafted for performance.
+          </p>
+          <ul class="service-list">
+            <li>Custom-coded from scratch</li>
+            <li>Optimized for speed &amp; SEO</li>
+            <li>Backend &amp; database integration</li>
+            <li>Authentication &amp; user portals</li>
+          </ul>
+        </div>
+
+        <div class="card reveal" id="service-ecommerce">
+          <div class="service-icon">🛒</div>
+          <h3 class="service-title serif">E-Commerce Solutions</h3>
+          <p class="service-desc">
+            Full-featured online stores that drive sales. Seamless checkout, inventory management, and secure payments.
+          </p>
+          <ul class="service-list">
+            <li>Product catalog &amp; management</li>
+            <li>Secure payment gateway integration</li>
+            <li>Order tracking &amp; fulfilment</li>
+            <li>Customer account portals</li>
+          </ul>
+        </div>
+
+        <div class="card reveal" id="service-maintenance">
+          <div class="service-icon">🔧</div>
+          <h3 class="service-title serif">Maintenance &amp; Support</h3>
+          <p class="service-desc">
+            Your website is a living asset. We provide ongoing updates, security patches, and performance monitoring.
+          </p>
+          <ul class="service-list">
+            <li>Regular security updates</li>
+            <li>Performance monitoring</li>
+            <li>Content updates &amp; changes</li>
+            <li>Priority support access</li>
+          </ul>
+        </div>
+
+        <div class="card reveal" id="service-seo">
+          <div class="service-icon">📈</div>
+          <h3 class="service-title serif">SEO &amp; Performance</h3>
+          <p class="service-desc">
+            Get found online and rank higher. We build websites that search engines love and users trust.
+          </p>
+          <ul class="service-list">
+            <li>Technical SEO optimization</li>
+            <li>Core Web Vitals optimization</li>
+            <li>Structured data markup</li>
+            <li>Analytics &amp; tracking setup</li>
+          </ul>
+        </div>
+
+        <div class="card reveal" id="service-dashboard">
+          <div class="service-icon">📊</div>
+          <h3 class="service-title serif">Client Portals &amp; Dashboards</h3>
+          <p class="service-desc">
+            Empower your clients with their own secure portal. Real-time data, subscription management, and more.
+          </p>
+          <ul class="service-list">
+            <li>Secure authentication</li>
+            <li>Real-time data &amp; analytics</li>
+            <li>Subscription &amp; billing portals</li>
+            <li>Role-based access control</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       WHY CHOOSE JOLARDO
+  ═══════════════════════════════ -->
+  <section class="section section-alt" id="why-us">
+    <div class="container">
+      <div class="why-layout">
+        <div class="why-left reveal">
+          <span class="section-tag">Why Choose Us</span>
+          <h2 class="section-title serif">The Jolardo Difference</h2>
+          <div class="divider" style="margin: 16px 0;"></div>
+          <p class="section-subtitle" style="max-width: 100%;">
+            We don't build generic websites. Every project is a unique collaboration crafted to reflect your brand's vision and achieve your business goals.
+          </p>
+        </div>
+
+        <div class="why-grid reveal">
+          <div class="why-item" id="why-premium">
+            <div class="why-icon">✦</div>
+            <div>
+              <h4 class="why-title">Premium Quality</h4>
+              <p class="why-desc">Every detail is considered. We deliver work that exceeds expectations, every single time.</p>
+            </div>
+          </div>
+          <div class="why-item" id="why-speed">
+            <div class="why-icon">⚡</div>
+            <div>
+              <h4 class="why-title">Fast Delivery</h4>
+              <p class="why-desc">Structured processes and clear timelines mean your project launches on schedule.</p>
+            </div>
+          </div>
+          <div class="why-item" id="why-support">
+            <div class="why-icon">🛡️</div>
+            <div>
+              <h4 class="why-title">Dedicated Support</h4>
+              <p class="why-desc">From launch day and beyond, we're your reliable partner for any updates and questions.</p>
+            </div>
+          </div>
+          <div class="why-item" id="why-custom">
+            <div class="why-icon">🎯</div>
+            <div>
+              <h4 class="why-title">Tailored Solutions</h4>
+              <p class="why-desc">No templates, no shortcuts. Your website is custom-built for your brand and audience.</p>
+            </div>
+          </div>
+          <div class="why-item" id="why-secure">
+            <div class="why-icon">🔒</div>
+            <div>
+              <h4 class="why-title">Secure &amp; Reliable</h4>
+              <p class="why-desc">Enterprise-grade security and best practices built into every project from day one.</p>
+            </div>
+          </div>
+          <div class="why-item" id="why-results">
+            <div class="why-icon">📊</div>
+            <div>
+              <h4 class="why-title">Results-Driven</h4>
+              <p class="why-desc">Beautiful design backed by strategy. We focus on outcomes that matter to your business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       24 HOUR SUPPORT
+  ═══════════════════════════════ -->
+  <section class="section" id="stats">
+    <div class="container">
+      <div class="support-showcase-card reveal" id="stat-support">
+        <div class="support-card-glow" aria-hidden="true"></div>
+        <div class="support-card-content">
+          <div class="support-status-badge">
+            <span class="support-pulse-dot" aria-hidden="true"></span>
+            <span>Always Active &bull; Real-Time Assistance</span>
+          </div>
+          <div class="support-counter-wrap">
+            <span class="support-num serif" data-count="24">0</span>
+            <span class="support-unit serif">/7</span>
+          </div>
+          <h3 class="support-title serif">Hour Dedicated Support</h3>
+          <p class="support-desc">
+            Bespoke around-the-clock technical assistance, instant responsiveness, and proactive maintenance crafted for world-class brands.
+          </p>
+          <div class="support-pills">
+            <div class="support-pill">
+              <span class="support-pill-icon">✦</span>
+              <span>Direct WhatsApp &amp; Concierge</span>
+            </div>
+            <div class="support-pill">
+              <span class="support-pill-icon">⚡</span>
+              <span>Rapid Response Guarantee</span>
+            </div>
+            <div class="support-pill">
+              <span class="support-pill-icon">🛡️</span>
+              <span>Continuous Server &amp; Security Care</span>
+            </div>
+          </div>
+          <div class="support-action">
+            <a href="contact.html" class="btn btn-primary btn-sm">Talk to Our Team &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════
+       CTA
+  ═══════════════════════════════ -->
+  <section class="section section-cta" id="cta">
+    <div class="container">
+      <div class="cta-card reveal">
+        <span class="section-tag">Ready to Start?</span>
+        <h2 class="section-title serif gradient-text">Let's Build Something<br/>Extraordinary</h2>
+        <p class="cta-desc">
+          Your vision deserves a website that commands attention. Get in touch with our team and let's bring your brand to life.
+        </p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary btn-lg" id="cta-contact">Contact Us Today</a>
+          <a href="create-account.html" class="btn btn-outline btn-lg" id="cta-register">Create Free Account</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer-container">
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <img src="icons/1.png" alt="Jolardo" />
+              <span class="serif">JOLARDO</span>
+            </div>
+            <p class="footer-desc">Premium web development and branding services. We craft bespoke digital experiences for world-class brands.</p>
+          </div>
+          <div>
+            <h4 class="footer-heading">Navigation</h4>
+            <div class="footer-links">
+              <a href="index.html">Home</a>
+              <a href="contact.html">Contact Us</a>
+              <a href="login.html">Login</a>
+              <a href="create-account.html">Create Account</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="footer-heading">Contact</h4>
+            <div class="footer-links">
+              <a href="mailto:info@jolardo.com">✉️ info@jolardo.com</a>
+              <a href="contact.html">💬 Get In Touch</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; 2026 Jolardo. All rights reserved. Luxury Digital Craftsmanship.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/env.js"></script>
+  <script src="js/supabase-cdn.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

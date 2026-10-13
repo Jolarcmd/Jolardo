@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — Jolardo</title>
+  <meta name="description" content="Create a free Jolardo client account to manage your website, subscription, and brand information." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://jolardo.com/create-account.html" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/create-account.css" />
+</head>
+<body>
+  <div id="page-loader" class="page-loader">
+    <img src="icons/1.png" alt="Jolardo" class="loader-logo" />
+    <div class="spinner"></div>
+  </div>
+  <script>
+    setTimeout(function() {
+      var l = document.getElementById('page-loader');
+      if (l) l.classList.add('hidden');
+    }, 1000);
+  </script>
+
+  <div class="auth-page">
+    <!-- Decorative side -->
+    <div class="auth-deco">
+      <div class="auth-logo float">
+        <img src="icons/1.png" alt="Jolardo Logo" />
+        <h1>JOLARDO</h1>
+        <p>Premium Web Development</p>
+      </div>
+      <div class="deco-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+    </div>
+
+    <!-- Form side -->
+    <div class="auth-panel">
+      <div class="auth-topbar">
+        <a href="index.html" class="navbar-logo" style="font-size:1.1rem;">
+          <img src="icons/1.png" alt="Jolardo" style="width:32px;height:32px;" />
+          <span class="serif">JOLARDO</span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <span id="theme-toggle-icon">☀️</span>
+        </button>
+      </div>
+
+      <!-- Success state (hidden initially) -->
+      <div id="register-success" class="auth-card slide-up" style="display:none; text-align:center;">
+        <div style="font-size:3rem; margin-bottom:16px;">✉️</div>
+        <h2 class="serif" style="margin-bottom:8px;">Check Your Email</h2>
+        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.7;margin-bottom:24px;">
+          We've sent a verification link to <strong id="success-email"></strong>.<br/>
+          Please check your inbox and click the link to activate your account.
+        </p>
+        <a href="login.html" class="btn btn-primary" style="width:100%;">Go to Login</a>
+      </div>
+
+      <!-- Registration Form -->
+      <div id="register-form-wrap" class="auth-card slide-up">
+        <div class="auth-card-header">
+          <h2 class="serif">Create Account</h2>
+          <p>Get started with your Jolardo client portal</p>
+        </div>
+
+        <form id="register-form" novalidate onsubmit="return false;">
+          <div class="form-group">
+            <label class="form-label" for="reg-name">Full Name *</label>
+            <input
+              type="text" id="reg-name" name="full_name"
+              class="form-control" placeholder="Your full name"
+              autocomplete="name" required maxlength="120"
+            />
+            <span class="form-error" id="err-name"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-email">Email Address *</label>
+            <input
+              type="email" id="reg-email" name="email"
+              class="form-control" placeholder="you@example.com"
+              autocomplete="email" required maxlength="200"
+            />
+            <span class="form-error" id="err-email"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-password">Password *</label>
+            <div class="input-wrapper">
+              <input
+                type="password" id="reg-password" name="password"
+                class="form-control" placeholder="Minimum 8 characters"
+                autocomplete="new-password" required minlength="8"
+              />
+              <span class="input-toggle" id="toggle-pw" role="button" aria-label="Show/hide password">👁️</span>
+            </div>
+            <div class="pw-strength" id="pw-strength" style="display:none;">
+              <div class="pw-bar"><div class="pw-bar-fill" id="pw-bar-fill"></div></div>
+              <span class="pw-label" id="pw-label"></span>
+            </div>
+            <span class="form-error" id="err-password"></span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-confirm">Confirm Password *</label>
+            <div class="input-wrapper">
+              <input
+                type="password" id="reg-confirm" name="confirm_password"
+                class="form-control" placeholder="Repeat your password"
+                autocomplete="new-password" required
+              />
+              <span class="input-toggle" id="toggle-confirm" role="button" aria-label="Show/hide password">👁️</span>
+            </div>
+            <span class="form-error" id="err-confirm"></span>
+          </div>
+
+          <div class="form-group terms-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="reg-terms" name="terms" required />
+              <span class="checkbox-custom"></span>
+              <span>
+                I agree to the
+                <span class="auth-link" style="cursor:default;">Terms of Service</span>
+                and
+                <span class="auth-link" style="cursor:default;">Privacy Policy</span>
+              </span>
+            </label>
+            <span class="form-error" id="err-terms"></span>
+          </div>
+
+          <!-- Honeypot -->
+          <div style="display:none;" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div id="form-error" class="auth-error" style="display:none;"></div>
+
+          <button type="submit" class="btn btn-primary" id="reg-submit" style="width:100%;margin-top:8px;">
+            <span id="submit-text">Create Account</span>
+            <span id="submit-spinner" class="spinner" style="display:none;"></span>
+          </button>
+        </form>
+
+        <div class="auth-divider"><span>or</span></div>
+
+        <p class="auth-switch">
+          Already have an account?
+          <a href="login.html" class="auth-link">Sign In →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/env.js"></script>
+  <script src="js/supabase-cdn.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/create-account.js"></script>
+</body>
+</html>

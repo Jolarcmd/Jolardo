@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>500 — System Notice | Jolardo</title>
+  <meta name="description" content="An unexpected server condition occurred. Our technical engineering team has been notified. Please retry or contact Jolardo support." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+  
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/error.css" />
+</head>
+<body class="error-page-wrapper">
+
+  <!-- Navbar -->
+  <header id="navbar-container">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo" aria-label="Jolardo Home">
+          <img src="icons/1.png" alt="Jolardo" width="44" height="44" />
+          <span>JOLARDO</span>
+        </a>
+        <div class="navbar-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="login.html" class="nav-link">Login</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Error Content -->
+  <main class="error-section" id="main-content">
+    <div class="error-container">
+      <div class="error-glow" aria-hidden="true" style="background: radial-gradient(circle, rgba(239, 68, 68, 0.12) 0%, rgba(0, 0, 0, 0) 70%);"></div>
+      <div class="error-content">
+        <div class="error-badge" style="border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.08); color: #F87171;">
+          System Interruption
+        </div>
+        <h1 class="error-code" style="background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #94A3B8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">500</h1>
+        <h2 class="error-title">Internal Server Error</h2>
+        <p class="error-description">
+          We encountered an unexpected server condition while processing your request. Rest assured, our engineering specialists are actively monitoring all services. Please try refreshing the page or return shortly.
+        </p>
+
+        <div class="error-actions">
+          <button type="button" class="btn btn-primary btn-lg" onclick="window.location.reload()">
+            <span>&#x21bb; Retry Now</span>
+          </button>
+          <a href="index.html" class="btn btn-outline btn-lg">
+            <span>&larr; Back to Home</span>
+          </a>
+          <a href="contact.html" class="btn btn-ghost">
+            <span>Report Issue &rarr;</span>
+          </a>
+        </div>
+
+        <div class="error-quick-links">
+          <p>Alternative Assistance</p>
+          <div class="quick-links-pills">
+            <a href="mailto:info@jolardo.com" class="quick-link-pill">✉️ Email Support: info@jolardo.com</a>
+            <a href="contact.html" class="quick-link-pill">💬 Contact Form</a>
+            <a href="index.html" class="quick-link-pill">🌐 Home Page</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer-container">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: 1px solid var(--border-color); padding: 24px 0; text-align: center;">
+        <span>&copy; 2026 Jolardo. All rights reserved. Luxury Digital Craftsmanship.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/env.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — Jolardo</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://jolardo.com/admin.html" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+  <div id="page-loader" class="page-loader">
+    <img src="icons/1.png" alt="Jolardo" class="loader-logo" />
+    <div class="spinner"></div>
+  </div>
+  <script>
+    setTimeout(function() {
+      var l = document.getElementById('page-loader');
+      if (l) l.classList.add('hidden');
+    }, 1000);
+  </script>
+
+  <div class="dashboard-layout" id="admin-layout">
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="icons/1.png" alt="Jolardo" />
+        <span class="serif">JOLARDO</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="sidebar-section-label">Dashboard</span>
+        <button class="sidebar-link active" data-section="overview" id="nav-overview">
+          <span class="icon">📊</span> Overview
+        </button>
+
+        <span class="sidebar-section-label">Management</span>
+        <button class="sidebar-link" data-section="clients" id="nav-clients">
+          <span class="icon">👥</span> Clients
+        </button>
+        <button class="sidebar-link" data-section="websites" id="nav-websites">
+          <span class="icon">🌐</span> Websites
+        </button>
+        <button class="sidebar-link" data-section="subscriptions" id="nav-subscriptions">
+          <span class="icon">💳</span> Subscriptions
+        </button>
+        <button class="sidebar-link" data-section="messages" id="nav-messages">
+          <span class="icon">✉️</span> Messages
+          <span class="badge badge-danger" id="msg-badge" style="display:none;margin-left:auto;font-size:0.65rem;padding:2px 6px;"></span>
+        </button>
+
+        <span class="sidebar-section-label">Configuration</span>
+        <button class="sidebar-link" data-section="settings" id="nav-settings">
+          <span class="icon">⚙️</span> Settings
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" id="sidebar-avatar">A</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name" id="sidebar-name">Admin</div>
+            <div class="sidebar-user-role">Administrator</div>
+          </div>
+        </div>
+        <button class="sidebar-link" id="logout-btn" style="margin-top:8px;color:#ef5350;">
+          <span class="icon">🚪</span> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="main-content">
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="sidebar-toggle btn btn-ghost" id="sidebar-toggle">☰</button>
+          <span class="topbar-title" id="topbar-title">Overview</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+          <a href="index.html" class="btn btn-outline btn-sm">← Back to Site</a>
+        </div>
+      </header>
+
+      <div class="page-content">
+
+        <!-- ── Overview ── -->
+        <section id="section-overview" class="dash-section">
+          <div class="stats-grid" id="stats-grid">
+            <div class="stat-card"><div class="stat-label">Total Clients</div><div class="stat-value" id="stat-clients">—</div></div>
+            <div class="stat-card"><div class="stat-label">Total Websites</div><div class="stat-value" id="stat-websites">—</div></div>
+            <div class="stat-card"><div class="stat-label">Active Subscriptions</div><div class="stat-value" id="stat-active-subs">—</div></div>
+            <div class="stat-card"><div class="stat-label">Expired Subscriptions</div><div class="stat-value" id="stat-expired-subs">—</div></div>
+            <div class="stat-card"><div class="stat-label">Pending Payments</div><div class="stat-value" id="stat-pending-payments">—</div></div>
+            <div class="stat-card"><div class="stat-label">Unread Messages</div><div class="stat-value" id="stat-unread-msgs">—</div></div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;">
+            <!-- Recent Messages -->
+            <div class="card">
+              <h3 class="serif" style="margin-bottom:16px;font-size:1.1rem;">Recent Messages</h3>
+              <div id="recent-messages-list">
+                <div class="empty-state"><div class="spinner"></div></div>
+              </div>
+            </div>
+            <!-- Recent Clients -->
+            <div class="card">
+              <h3 class="serif" style="margin-bottom:16px;font-size:1.1rem;">Recent Clients</h3>
+              <div id="recent-clients-list">
+                <div class="empty-state"><div class="spinner"></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Clients ── -->
+        <section id="section-clients" class="dash-section hidden">
+          <div class="section-toolbar">
+            <input type="search" id="client-search" class="form-control search-input" placeholder="Search clients…" />
+          </div>
+          <div class="card">
+            <div class="table-wrapper" id="clients-table-wrap">
+              <div class="empty-state"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Websites ── -->
+        <section id="section-websites" class="dash-section hidden">
+          <div class="section-toolbar">
+            <button class="btn btn-primary btn-sm" id="add-website-btn">+ New Website</button>
+          </div>
+          <div class="card">
+            <div class="table-wrapper" id="websites-table-wrap">
+              <div class="empty-state"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Subscriptions ── -->
+        <section id="section-subscriptions" class="dash-section hidden">
+          <div class="section-toolbar">
+            <button class="btn btn-primary btn-sm" id="add-sub-btn">+ New Subscription</button>
+          </div>
+          <div class="card">
+            <div class="table-wrapper" id="subs-table-wrap">
+              <div class="empty-state"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Messages ── -->
+        <section id="section-messages" class="dash-section hidden">
+          <div class="messages-layout">
+            <div class="messages-list" id="messages-list">
+              <div class="empty-state"><div class="spinner"></div></div>
+            </div>
+            <div class="message-detail card" id="message-detail">
+              <div class="empty-state">
+                <div class="empty-state-icon">✉️</div>
+                <h3>Select a Message</h3>
+                <p>Click on a message to read it here.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── Settings ── -->
+        <section id="section-settings" class="dash-section hidden">
+          <div class="settings-grid">
+            <div class="card">
+              <h3 class="serif" style="margin-bottom:20px;">Contact Settings</h3>
+              <form id="settings-form">
+                <div class="form-group">
+                  <label class="form-label" for="set-phone">Contact Phone</label>
+                  <input type="tel" id="set-phone" class="form-control" placeholder="+1 234 567 8900" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-whatsapp">WhatsApp Number</label>
+                  <input type="tel" id="set-whatsapp" class="form-control" placeholder="+1 234 567 8900" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-email">Contact Email</label>
+                  <input type="email" id="set-email" class="form-control" placeholder="hello@jolardo.com" />
+                </div>
+                <button type="submit" class="btn btn-primary" id="settings-submit">
+                  <span id="settings-text">Save Settings</span>
+                  <span id="settings-spinner" class="spinner" style="display:none;"></span>
+                </button>
+              </form>
+            </div>
+
+            <div class="card">
+              <h3 class="serif" style="margin-bottom:20px;">Brand Settings</h3>
+              <form id="brand-settings-form">
+                <div class="form-group">
+                  <label class="form-label" for="set-site-name">Website Name</label>
+                  <input type="text" id="set-site-name" class="form-control" placeholder="Jolardo" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="set-tagline">Tagline</label>
+                  <input type="text" id="set-tagline" class="form-control" placeholder="Premium Web Development" />
+                </div>
+                <button type="submit" class="btn btn-primary" id="brand-settings-submit">
+                  <span id="brand-settings-text">Save Brand Settings</span>
+                  <span id="brand-settings-spinner" class="spinner" style="display:none;"></span>
+                </button>
+              </form>
+            </div>
+
+            <!-- InstaPay Settings -->
+            <div class="card" style="grid-column: 1 / -1;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                <span style="font-size:1.6rem;">📱</span>
+                <div>
+                  <h3 class="serif" style="margin:0;">InstaPay Payment Settings</h3>
+                  <p style="color:var(--text-muted);font-size:0.85rem;margin:2px 0 0;">Clients will use these details to pay for their subscriptions.</p>
+                </div>
+              </div>
+              <form id="instapay-settings-form">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;">
+                  <div class="form-group">
+                    <label class="form-label" for="set-instapay-user">InstaPay Username / IPA</label>
+                    <input type="text" id="set-instapay-user" class="form-control" placeholder="e.g. username@instapay" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="set-instapay-phone">InstaPay Mobile Number</label>
+                    <input type="tel" id="set-instapay-phone" class="form-control" placeholder="+20 10xxxxxxxx" />
+                  </div>
+                  <div class="form-group" style="grid-column: 1 / -1;">
+                    <label class="form-label" for="set-instapay-link">InstaPay Payment Link / Deep Link</label>
+                    <input type="url" id="set-instapay-link" class="form-control" placeholder="https://ipn.eg/... or payment URL" />
+                  </div>
+                  <div class="form-group" style="grid-column: 1 / -1;">
+                    <label class="form-label" for="set-instapay-notes">Payment Instructions for Clients</label>
+                    <textarea id="set-instapay-notes" class="form-control" rows="2" placeholder="e.g. Please transfer the amount via InstaPay and include your invoice reference in transfer notes."></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="instapay-settings-submit" style="margin-top:8px;">
+                  <span id="instapay-settings-text">Save InstaPay Settings</span>
+                  <span id="instapay-settings-spinner" class="spinner" style="display:none;"></span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Client Detail Modal ══ -->
+  <div id="client-modal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 class="modal-title serif" id="client-modal-title">Client Details</h3>
+        <span class="modal-close" data-modal-close role="button">✕</span>
+      </div>
+      <div class="modal-body" id="client-modal-body"></div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Website Edit Modal ══ -->
+  <div id="website-modal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:620px;">
+      <div class="modal-header">
+        <h3 class="modal-title serif" id="website-modal-title">Website</h3>
+        <span class="modal-close" data-modal-close role="button">✕</span>
+      </div>
+      <div class="modal-body">
+        <form id="website-form" novalidate>
+          <input type="hidden" id="wf-id" />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="wf-client">Client</label>
+              <select id="wf-client" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="wf-name">Website Name</label>
+              <input type="text" id="wf-name" class="form-control" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="wf-brand">Brand Name</label>
+              <input type="text" id="wf-brand" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="wf-domain">Domain</label>
+              <input type="text" id="wf-domain" class="form-control" placeholder="example.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="wf-url">Website URL</label>
+            <input type="url" id="wf-url" class="form-control" placeholder="https://example.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Brand / Website Logo</label>
+            <div class="logo-upload-box" id="wf-logo-upload-box">
+              <input type="file" id="wf-logo-file" accept="image/*" style="display:none;" />
+              <div class="logo-preview-wrapper" id="wf-logo-preview-wrapper" style="display:none;">
+                <img id="wf-logo-preview" src="" alt="Logo Preview" style="max-height:80px;border-radius:6px;object-fit:contain;background:var(--bg-glass);padding:4px;border:1px solid var(--border-color);" />
+                <button type="button" class="btn btn-ghost btn-sm" id="wf-logo-remove-btn" style="color:#ef5350;margin-left:8px;">✕ Remove</button>
+              </div>
+              <div class="logo-dropzone" id="wf-logo-dropzone" style="border:2px dashed var(--border-color);border-radius:var(--radius-md);padding:16px;text-align:center;cursor:pointer;background:var(--bg-glass);transition:all var(--transition);">
+                <div style="font-size:1.6rem;margin-bottom:4px;">📤</div>
+                <div style="font-weight:600;font-size:0.875rem;color:var(--text-primary);">Click or Drag & Drop to Upload Logo Image</div>
+                <div style="font-size:0.75rem;color:var(--text-muted);margin-top:2px;">PNG, JPG, SVG, WebP (Uploaded directly to storage)</div>
+              </div>
+              <div id="wf-logo-uploading" style="display:none;margin-top:8px;font-size:0.82rem;color:var(--clr-gold);">
+                <span class="spinner" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:6px;"></span> Uploading logo…
+              </div>
+            </div>
+            <div style="margin-top:8px;">
+              <label class="form-label" for="wf-logo" style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px;">Or paste Logo Image URL directly</label>
+              <input type="url" id="wf-logo" class="form-control" placeholder="https://..." />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="wf-desc">Brand Description</label>
+            <textarea id="wf-desc" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="wf-status">Status</label>
+            <select id="wf-status" class="form-control">
+              <option value="development">Development</option>
+              <option value="live">Live</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="offline">Offline</option>
+              <option value="suspended">Suspended</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Cancel</button>
+        <button class="btn btn-primary" id="website-save-btn">
+          <span id="ws-text">Save Website</span>
+          <span id="ws-spinner" class="spinner" style="display:none;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ Subscription Edit Modal ══ -->
+  <div id="sub-modal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:620px;">
+      <div class="modal-header">
+        <h3 class="modal-title serif" id="sub-modal-title">Subscription</h3>
+        <span class="modal-close" data-modal-close role="button">✕</span>
+      </div>
+      <div class="modal-body">
+        <form id="sub-form" novalidate>
+          <input type="hidden" id="sf-id" />
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sf-client">Client</label>
+              <select id="sf-client" class="form-control" required></select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sf-website">Website</label>
+              <select id="sf-website" class="form-control"></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sf-plan-name">Plan Name</label>
+              <input type="text" id="sf-plan-name" class="form-control" placeholder="e.g. Standard, Premium, E-Commerce" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sf-price">Amount / Bill Price</label>
+              <input type="number" id="sf-price" class="form-control" min="0" step="0.01" placeholder="1500" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sf-currency">Currency</label>
+              <select id="sf-currency" class="form-control">
+                <option value="EGP">EGP (Egyptian Pound)</option>
+                <option value="USD">USD ($)</option>
+                <option value="EUR">EUR (€)</option>
+                <option value="SAR">SAR (Saudi Riyal)</option>
+                <option value="AED">AED (UAE Dirham)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sf-payment-status">Payment Status</label>
+              <select id="sf-payment-status" class="form-control">
+                <option value="pending">Pending (Unpaid)</option>
+                <option value="paid">Paid (Confirmed)</option>
+                <option value="failed">Failed</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sf-status">Subscription Status</label>
+              <select id="sf-status" class="form-control">
+                <option value="active">Active</option>
+                <option value="pending">Pending</option>
+                <option value="expired">Expired</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sf-start">Start Date</label>
+              <input type="date" id="sf-start" class="form-control" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="sf-renewal">Renewal Date</label>
+              <input type="date" id="sf-renewal" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="sf-ref">Invoice / Payment Reference</label>
+              <input type="text" id="sf-ref" class="form-control" placeholder="e.g. INV-2026-001" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sf-instapay-link">Custom InstaPay Link (Optional)</label>
+            <input type="url" id="sf-instapay-link" class="form-control" placeholder="https://ipn.eg/... (leaves blank to use default settings)" />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Cancel</button>
+        <button class="btn btn-primary" id="sub-save-btn">
+          <span id="sub-save-text">Save Subscription</span>
+          <span id="sub-save-spinner" class="spinner" style="display:none;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/env.js"></script>
+  <script src="js/supabase-cdn.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

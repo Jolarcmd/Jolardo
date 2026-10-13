@@ -1,0 +1,152 @@
+/* =====================================================
+   Jolardo — Custom Error Pages (404, 500, Forbidden)
+   Luxury Black & Gold Design System
+   ===================================================== */
+
+.error-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.06) 0%, rgba(10, 10, 10, 1) 70%);
+}
+
+.error-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 24px 60px;
+  text-align: center;
+}
+
+.error-container {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.error-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.error-content {
+  position: relative;
+  z-index: 1;
+}
+
+.error-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--clr-gold, #D4AF37);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.error-code {
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 15vw, 9rem);
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 50%, #997B24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+}
+
+.error-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  letter-spacing: 0.02em;
+}
+
+.error-description {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+
+.error-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.error-quick-links {
+  border-top: 1px solid var(--border-color);
+  padding-top: 30px;
+  margin-top: 20px;
+}
+
+.error-quick-links p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.quick-links-pills {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.quick-link-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  transition: all var(--transition);
+  text-decoration: none;
+}
+
+.quick-link-pill:hover {
+  background: var(--bg-glass-hover);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--clr-gold, #D4AF37);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .error-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .error-actions .btn {
+    width: 100%;
+  }
+}

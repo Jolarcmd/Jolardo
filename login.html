@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Jolardo</title>
+  <meta name="description" content="Log in to your Jolardo client account to access your dashboard." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://jolardo.com/login.html" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+  <div id="page-loader" class="page-loader">
+    <img src="icons/1.png" alt="Jolardo" class="loader-logo" />
+    <div class="spinner"></div>
+  </div>
+  <script>
+    setTimeout(function() {
+      var l = document.getElementById('page-loader');
+      if (l) l.classList.add('hidden');
+    }, 1000);
+  </script>
+
+  <div class="auth-page">
+    <!-- Decorative side -->
+    <div class="auth-deco">
+      <div class="auth-logo float">
+        <img src="icons/1.png" alt="Jolardo Logo" />
+        <h1>JOLARDO</h1>
+        <p>Premium Web Development</p>
+      </div>
+      <div class="deco-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+      </div>
+    </div>
+
+    <!-- Form side -->
+    <div class="auth-panel">
+      <!-- Top nav strip -->
+      <div class="auth-topbar">
+        <a href="index.html" class="navbar-logo" style="font-size:1.1rem;">
+          <img src="icons/1.png" alt="Jolardo" style="width:32px;height:32px;" />
+          <span class="serif">JOLARDO</span>
+        </a>
+        <button class="theme-toggle" aria-label="Toggle theme">
+          <span id="theme-toggle-icon">☀️</span>
+        </button>
+      </div>
+
+      <div class="auth-card slide-up">
+        <div class="auth-card-header">
+          <h2 class="serif">Welcome Back</h2>
+          <p>Sign in to access your dashboard</p>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" novalidate onsubmit="return false;">
+          <div class="form-group">
+            <label class="form-label" for="login-email">Email Address</label>
+            <input
+              type="email" id="login-email" name="email"
+              class="form-control" placeholder="you@example.com"
+              autocomplete="email" required
+            />
+            <span class="form-error" id="err-email"></span>
+          </div>
+
+          <div class="form-group">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+              <label class="form-label" for="login-password" style="margin-bottom:0;">Password</label>
+              <button type="button" class="btn btn-ghost" id="forgot-btn" style="font-size:0.8rem;padding:0;text-decoration:underline;">
+                Forgot password?
+              </button>
+            </div>
+            <div class="input-wrapper">
+              <input
+                type="password" id="login-password" name="password"
+                class="form-control" placeholder="Enter your password"
+                autocomplete="current-password" required
+              />
+              <span class="input-toggle" id="toggle-pw" role="button" aria-label="Show/hide password">👁️</span>
+            </div>
+            <span class="form-error" id="err-password"></span>
+          </div>
+
+          <div id="form-error" class="auth-error" style="display:none;"></div>
+
+          <button type="submit" class="btn btn-primary" id="login-submit" style="width:100%;margin-top:8px;">
+            <span id="submit-text">Sign In</span>
+            <span id="submit-spinner" class="spinner" style="display:none;"></span>
+          </button>
+        </form>
+
+        <div class="auth-divider"><span>or</span></div>
+
+        <p class="auth-switch">
+          Don't have an account?
+          <a href="create-account.html" class="auth-link">Create Account →</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div id="forgot-modal" class="modal-backdrop hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title serif">Reset Password</h3>
+        <span class="modal-close" data-modal-close role="button">✕</span>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px;">
+          Enter your email address and we'll send you a link to reset your password.
+        </p>
+        <div class="form-group">
+          <label class="form-label" for="reset-email">Email Address</label>
+          <input
+            type="email" id="reset-email"
+            class="form-control" placeholder="you@example.com"
+          />
+          <span class="form-error" id="err-reset-email"></span>
+        </div>
+        <div id="reset-success" style="display:none; padding:12px; background:rgba(76,175,120,0.1); border:1px solid rgba(76,175,120,0.3); border-radius:var(--radius-sm); font-size:0.9rem; color:#4caf78; margin-top:12px;">
+          ✅ Reset link sent! Check your inbox.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" data-modal-close>Cancel</button>
+        <button class="btn btn-primary" id="reset-submit">
+          <span id="reset-text">Send Reset Link</span>
+          <span id="reset-spinner" class="spinner" style="display:none;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/env.js"></script>
+  <script src="js/supabase-cdn.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

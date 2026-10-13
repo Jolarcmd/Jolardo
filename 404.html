@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found | Jolardo</title>
+  <meta name="description" content="The page you are looking for could not be found. Return to Jolardo's official website for luxury web design and development." />
+  <meta name="robots" content="noindex, follow" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+  
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/error.css" />
+</head>
+<body class="error-page-wrapper">
+
+  <!-- Navbar -->
+  <header id="navbar-container">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="navbar-inner">
+        <a href="index.html" class="navbar-logo" aria-label="Jolardo Home">
+          <img src="icons/1.png" alt="Jolardo" width="44" height="44" />
+          <span>JOLARDO</span>
+        </a>
+        <div class="navbar-nav">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="create-account.html" class="btn btn-primary btn-sm">Create Account</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Error Content -->
+  <main class="error-section" id="main-content">
+    <div class="error-container">
+      <div class="error-glow" aria-hidden="true"></div>
+      <div class="error-content">
+        <div class="error-badge">Lost in Digital Elegance</div>
+        <h1 class="error-code">404</h1>
+        <h2 class="error-title">Page Not Found</h2>
+        <p class="error-description">
+          The requested address could not be located. It may have been relocated, renamed, or is temporarily inaccessible. Let us guide you back to our bespoke digital experiences.
+        </p>
+
+        <div class="error-actions">
+          <a href="index.html" class="btn btn-primary btn-lg">
+            <span>&larr; Back to Home</span>
+          </a>
+          <button type="button" class="btn btn-outline btn-lg" onclick="window.history.length > 1 ? window.history.back() : window.location.href='index.html'">
+            <span>Go Back</span>
+          </button>
+          <a href="contact.html" class="btn btn-ghost">
+            <span>Need Assistance? Contact Us &rarr;</span>
+          </a>
+        </div>
+
+        <div class="error-quick-links">
+          <p>Helpful Navigation Links</p>
+          <div class="quick-links-pills">
+            <a href="index.html" class="quick-link-pill">Home</a>
+            <a href="index.html#services" class="quick-link-pill">Services</a>
+            <a href="contact.html" class="quick-link-pill">Request Consultation</a>
+            <a href="login.html" class="quick-link-pill">Client Portal</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" id="footer-container">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: 1px solid var(--border-color); padding: 24px 0; text-align: center;">
+        <span>&copy; 2026 Jolardo. All rights reserved. Luxury Digital Craftsmanship.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/env.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>

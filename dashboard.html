@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Jolardo</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="canonical" href="https://jolardo.com/dashboard.html" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="icons/1.png" type="image/png" />
+  <link rel="apple-touch-icon" href="icons/1.png" />
+  <link rel="stylesheet" href="css/global.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+  <div id="page-loader" class="page-loader">
+    <img src="icons/1.png" alt="Jolardo" class="loader-logo" />
+    <div class="spinner"></div>
+  </div>
+  <script>
+    setTimeout(function() {
+      var l = document.getElementById('page-loader');
+      if (l) l.classList.add('hidden');
+    }, 1000);
+  </script>
+
+  <div class="dashboard-layout" id="dashboard-layout">
+
+    <!-- Sidebar overlay (mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="icons/1.png" alt="Jolardo" />
+        <span class="serif">JOLARDO</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <span class="sidebar-section-label">My Account</span>
+        <button class="sidebar-link active" data-section="overview" id="nav-overview">
+          <span class="icon">🏠</span> Overview
+        </button>
+        <button class="sidebar-link" data-section="brand" id="nav-brand">
+          <span class="icon">🎨</span> Brand Info
+        </button>
+        <button class="sidebar-link" data-section="website" id="nav-website">
+          <span class="icon">🌐</span> My Websites
+        </button>
+        <button class="sidebar-link" data-section="subscription" id="nav-subscription">
+          <span class="icon">💳</span> Subscriptions &amp; Billing
+        </button>
+
+        <span class="sidebar-section-label" style="margin-top: 8px;">Settings</span>
+        <button class="sidebar-link" data-section="account" id="nav-account">
+          <span class="icon">⚙️</span> Account Settings
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="sidebar-avatar" id="sidebar-avatar">J</div>
+          <div class="sidebar-user-info">
+            <div class="sidebar-user-name" id="sidebar-name">Loading…</div>
+            <div class="sidebar-user-role">Client</div>
+          </div>
+        </div>
+        <button class="sidebar-link" id="logout-btn" style="margin-top:8px; color: #ef5350;">
+          <span class="icon">🚪</span> Log Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <div class="main-content">
+      <!-- Topbar -->
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="sidebar-toggle btn btn-ghost" aria-label="Toggle sidebar" id="sidebar-toggle">☰</button>
+          <span class="topbar-title" id="topbar-title">Overview</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <span id="theme-toggle-icon">☀️</span>
+          </button>
+          <a href="index.html" class="btn btn-outline btn-sm">← Back to Site</a>
+        </div>
+      </header>
+
+      <div class="page-content">
+
+        <!-- ── SECTION: Overview ── -->
+        <section id="section-overview" class="dash-section">
+          <div class="section-greeting">
+            <h2 class="serif" id="greeting-title">Welcome back</h2>
+            <p id="greeting-sub" style="color:var(--text-muted);font-size:0.9rem;">Here's a summary of your websites and subscriptions.</p>
+          </div>
+
+          <div class="overview-grid">
+            <div class="card-glass overview-card" id="ov-websites-card">
+              <div class="ov-icon">🌐</div>
+              <div class="ov-label">My Websites</div>
+              <div class="ov-value" id="ov-websites-count"><div class="skeleton" style="width:50px;height:22px;border-radius:4px;"></div></div>
+            </div>
+            <div class="card-glass overview-card" id="ov-subs-card">
+              <div class="ov-icon">💳</div>
+              <div class="ov-label">Active Subscriptions</div>
+              <div class="ov-value" id="ov-subs-count"><div class="skeleton" style="width:50px;height:22px;border-radius:4px;"></div></div>
+            </div>
+            <div class="card-glass overview-card" id="ov-pending-card">
+              <div class="ov-icon">📱</div>
+              <div class="ov-label">Pending Invoices</div>
+              <div class="ov-value" id="ov-pending-count"><div class="skeleton" style="width:80px;height:22px;border-radius:12px;"></div></div>
+            </div>
+            <div class="card-glass overview-card" id="ov-renewal-card">
+              <div class="ov-icon">🔄</div>
+              <div class="ov-label">Next Renewal</div>
+              <div class="ov-value" id="ov-renewal-date"><div class="skeleton" style="width:110px;height:22px;border-radius:4px;"></div></div>
+            </div>
+          </div>
+
+          <!-- Pending Bills Banner (if any) -->
+          <div id="pending-bills-banner" style="display:none;margin-bottom:24px;"></div>
+
+          <!-- Quick access: Client Websites -->
+          <div class="card" style="margin-bottom:20px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+              <h3 class="serif" style="margin:0;font-size:1.15rem;">Your Websites</h3>
+              <button class="btn btn-outline btn-sm" onclick="switchSection('website')">View All Websites →</button>
+            </div>
+            <div id="ov-websites-list">
+              <div class="empty-state"><div class="spinner"></div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SECTION: Brand Info ── -->
+        <section id="section-brand" class="dash-section hidden">
+          <div class="section-heading">
+            <h2 class="serif">Brand Information</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Your brand details as set up with Jolardo.</p>
+          </div>
+          <div id="brand-content">
+            <div class="empty-state"><div class="spinner"></div></div>
+          </div>
+        </section>
+
+        <!-- ── SECTION: Websites (Multiple) ── -->
+        <section id="section-website" class="dash-section hidden">
+          <div class="section-heading">
+            <h2 class="serif">My Websites</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Websites designed and developed for your brands by Jolardo.</p>
+          </div>
+          <div id="websites-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));gap:20px;">
+            <div class="skeleton-card skeleton" style="height:200px;"></div>
+          </div>
+        </section>
+
+        <!-- ── SECTION: Subscriptions & Billing (Multiple) ── -->
+        <section id="section-subscription" class="dash-section hidden">
+          <div class="section-heading">
+            <h2 class="serif">Subscriptions &amp; Billing</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Manage all your plans and pay easily via InstaPay.</p>
+          </div>
+
+          <!-- Subscriptions List Container -->
+          <div id="subscriptions-list" style="display:flex;flex-direction:column;gap:16px;margin-bottom:32px;">
+            <div class="skeleton-card skeleton" style="height:140px;"></div>
+          </div>
+
+          <div>
+            <h3 class="serif" style="font-size:1.15rem;margin-bottom:16px;">Payment History</h3>
+            <div class="card">
+              <div class="table-wrapper" id="payments-table-wrap">
+                <div class="empty-state">
+                  <div class="empty-state-icon">🧾</div>
+                  <p>Loading payment history…</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ── SECTION: Account Settings ── -->
+        <section id="section-account" class="dash-section hidden">
+          <div class="section-heading">
+            <h2 class="serif">Account Settings</h2>
+            <p style="color:var(--text-muted);font-size:0.9rem;">Update your profile and change your password.</p>
+          </div>
+
+          <div class="settings-grid">
+            <!-- Profile -->
+            <div class="card">
+              <h3 class="serif" style="margin-bottom:20px;">Profile Information</h3>
+              <form id="profile-form" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="profile-name">Full Name</label>
+                  <input type="text" id="profile-name" class="form-control" maxlength="120" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" id="profile-email" class="form-control" disabled style="opacity:0.6;" />
+                  <span style="font-size:0.75rem;color:var(--text-muted);display:block;margin-top:4px;">Email cannot be changed here. Contact support.</span>
+                </div>
+                <div id="profile-error" class="auth-error" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary" id="profile-submit">
+                  <span id="profile-text">Save Changes</span>
+                  <span id="profile-spinner" class="spinner" style="display:none;"></span>
+                </button>
+              </form>
+            </div>
+
+            <!-- Password -->
+            <div class="card">
+              <h3 class="serif" style="margin-bottom:20px;">Change Password</h3>
+              <form id="password-form" novalidate>
+                <div class="form-group">
+                  <label class="form-label" for="pw-new">New Password</label>
+                  <div class="input-wrapper">
+                    <input type="password" id="pw-new" class="form-control" placeholder="Minimum 8 characters" />
+                    <span class="input-toggle" id="toggle-new" role="button">👁️</span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="pw-confirm">Confirm New Password</label>
+                  <div class="input-wrapper">
+                    <input type="password" id="pw-confirm" class="form-control" placeholder="Repeat new password" />
+                    <span class="input-toggle" id="toggle-confirm" role="button">👁️</span>
+                  </div>
+                </div>
+                <div id="pw-error" class="auth-error" style="display:none;"></div>
+                <button type="submit" class="btn btn-primary" id="pw-submit">
+                  <span id="pw-text">Update Password</span>
+                  <span id="pw-spinner" class="spinner" style="display:none;"></span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+  <!-- ══ InstaPay Payment Modal ══ -->
+  <div id="instapay-modal" class="modal-backdrop hidden">
+    <div class="modal" style="max-width:540px;">
+      <div class="modal-header">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:1.5rem;">📱</span>
+          <h3 class="modal-title serif" id="ip-modal-title">Pay via InstaPay</h3>
+        </div>
+        <span class="modal-close" data-modal-close role="button" onclick="closeModal('instapay-modal')">✕</span>
+      </div>
+      <div class="modal-body" id="instapay-modal-body">
+        <!-- Invoice Summary Box -->
+        <div style="background:var(--bg-glass);border:1px solid var(--border-color);border-radius:var(--radius-md);padding:18px;margin-bottom:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;">
+            <div>
+              <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);">Invoice For</div>
+              <div style="font-weight:700;font-size:1.05rem;" id="ip-bill-plan">—</div>
+              <div style="font-size:0.8rem;color:var(--clr-gold);" id="ip-bill-website"></div>
+            </div>
+            <div style="text-align:right;">
+              <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);">Amount Due</div>
+              <div style="font-size:1.35rem;font-weight:700;color:var(--text-primary);" id="ip-bill-amount">0 EGP</div>
+            </div>
+          </div>
+          <div style="font-size:0.8rem;color:var(--text-muted);border-top:1px dashed var(--border-color);padding-top:8px;display:flex;justify-content:space-between;">
+            <span>Reference: <strong style="color:var(--text-primary);" id="ip-bill-ref">INV-0000</strong></span>
+            <span id="ip-bill-date"></span>
+          </div>
+        </div>
+
+        <!-- InstaPay Credentials -->
+        <div style="margin-bottom:20px;">
+          <label class="form-label" style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;display:block;">InstaPay Transfer Details</label>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <!-- IPA / Username -->
+            <div style="display:flex;align-items:center;justify-content:space-between;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:10px 14px;">
+              <div>
+                <div style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;">InstaPay Username / IPA</div>
+                <div style="font-weight:600;font-size:0.95rem;color:var(--clr-gold);" id="ip-account-username">jolardo@instapay</div>
+              </div>
+              <button class="btn btn-outline btn-sm" id="ip-copy-username-btn" type="button">📋 Copy IPA</button>
+            </div>
+            <!-- Phone Number (if available) -->
+            <div id="ip-phone-row" style="display:flex;align-items:center;justify-content:space-between;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-sm);padding:10px 14px;">
+              <div>
+                <div style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;">Mobile Number</div>
+                <div style="font-weight:600;font-size:0.95rem;" id="ip-account-phone">—</div>
+              </div>
+              <button class="btn btn-outline btn-sm" id="ip-copy-phone-btn" type="button">📋 Copy Phone</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Direct Link Button -->
+        <div id="ip-link-wrapper" style="margin-bottom:20px;">
+          <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="ip-direct-link" style="width:100%;justify-content:center;display:flex;align-items:center;gap:8px;">
+            <span>📱</span> Open in InstaPay
+          </a>
+        </div>
+
+        <!-- Instructions -->
+        <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.25);border-radius:var(--radius-sm);padding:14px;margin-bottom:20px;font-size:0.825rem;line-height:1.6;">
+          <strong style="color:var(--clr-gold);display:block;margin-bottom:4px;">How to Complete Payment:</strong>
+          <ol style="margin:0;padding-left:18px;color:var(--text-secondary);">
+            <li>Open the <strong>InstaPay App</strong> on your mobile.</li>
+            <li>Send the exact amount to the IPA or mobile number above.</li>
+            <li>In the <strong>Transfer Notes / Reason</strong>, type: <strong style="color:var(--text-primary);" id="ip-inst-ref">INV-REF</strong></li>
+            <li>After transferring, enter your transaction reference below and confirm.</li>
+          </ol>
+        </div>
+
+        <!-- Optional Confirmation Input -->
+        <div class="form-group" style="margin-bottom:0;">
+          <label class="form-label" for="ip-client-tx-ref">Your Transfer Reference / Transaction ID (Optional)</label>
+          <input type="text" id="ip-client-tx-ref" class="form-control" placeholder="e.g. Bank transaction number or mobile number you sent from" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" data-modal-close onclick="closeModal('instapay-modal')">Close</button>
+        <button class="btn btn-primary" id="ip-confirm-paid-btn">
+          <span id="ip-confirm-text">✓ I Have Sent via InstaPay</span>
+          <span id="ip-confirm-spinner" class="spinner" style="display:none;"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/env.js"></script>
+  <script src="js/supabase-cdn.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

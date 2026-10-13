@@ -1,0 +1,25 @@
+# =====================================================
+# Jolardo.com — Robots.txt
+# Official Domain: https://jolardo.com
+# =====================================================
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /contact.html
+Allow: /css/
+Allow: /icons/
+
+# Disallow private application areas, authentication, and internal assets
+Disallow: /admin.html
+Disallow: /dashboard.html
+Disallow: /login.html
+Disallow: /create-account.html
+Disallow: /404.html
+Disallow: /500.html
+Disallow: /js/env.js
+Disallow: /database.sql
+Disallow: /.env*
+
+# XML Sitemap Location
+Sitemap: https://jolardo.com/sitemap.xml
